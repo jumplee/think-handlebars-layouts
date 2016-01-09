@@ -1,5 +1,6 @@
 'use strict';
-
+var fs=require('fs');
+var path=require('path');
 var hasOwn = Object.prototype.hasOwnProperty;
 
 function noop() {
@@ -90,7 +91,7 @@ function mixin(target) {
  * @param {Object} handlebars Handlebars instance.
  * @return {Object} Object of helpers.
  */
-function layouts(handlebars) {
+function layouts(handlebars,viewPath) {
 	var helpers = {
 		/**
 		 * @method extend
@@ -112,18 +113,16 @@ function layouts(handlebars) {
 
 			var fn = options.fn || noop,
 				context = mixin({}, this, customContext, options.hash),
-				data = handlebars.createFrame(options.data),
-				template = handlebars.partials[name];
+				data = handlebars.createFrame(options.data);
+			//以view目录为基础目录加载相对路径读取layout文件，生成template
+			var c=fs.readFileSync(path.join(viewPath,name),'utf-8');
+			var template = handlebars.compile(c);
 
 			// Partial template required
 			if (template == null) {
 				throw new Error('Missing partial: \'' + name + '\'');
 			}
 
-			// Compile partial, if needed
-			if (typeof template !== 'function') {
-				template = handlebars.compile(template);
-			}
 
 			// Add overrides to stack
 			getStack(context).push(fn);
@@ -219,8 +218,8 @@ function layouts(handlebars) {
  * @return {Object} Object of helpers.
  * @static
  */
-layouts.register = function (handlebars) {
-	var helpers = layouts(handlebars);
+layouts.register = function (handlebars,viewPath) {
+	var helpers = layouts(handlebars,viewPath);
 
 	handlebars.registerHelper(helpers);
 

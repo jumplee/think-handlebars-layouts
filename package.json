@@ -1,7 +1,7 @@
 {
-  "name": "handlebars-layouts",
-  "version": "3.1.3",
-  "description": "Handlebars helpers which implement layout blocks similar to Jade, Jinja, Swig, and Twig.",
+  "name": "think-handlebars-layouts",
+  "version": "0.0.1",
+  "description": "just a adapter for thinkjs2 for handlebars-layouts",
   "keywords": [
     "blocks",
     "dust",
@@ -13,16 +13,17 @@
     "mote",
     "mustache",
     "swig",
-    "twig"
+    "twig",
+    "thinkjs"
   ],
-  "homepage": "https://github.com/shannonmoeller/handlebars-layouts",
-  "bugs": "https://github.com/shannonmoeller/handlebars-layouts/issues",
+  "homepage": "https://github.com/jumplee/think-handlebars-layouts",
+  "bugs": "https://github.com/jumplee/think-handlebars-layouts/issues",
   "license": "MIT",
-  "author": "Shannon Moeller <me@shannonmoeller.com> (http://shannonmoeller.com)",
+  "author": "jumplee",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shannonmoeller/handlebars-layouts.git"
+    "url": "https://github.com/jumplee/think-handlebars-layouts.git"
   },
   "scripts": {
     "coveralls": "cat ./coverage/lcov.info | coveralls",
