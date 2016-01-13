@@ -91,7 +91,7 @@ function mixin(target) {
  * @param {Object} handlebars Handlebars instance.
  * @return {Object} Object of helpers.
  */
-function layouts(handlebars,viewPath) {
+function layouts(handlebars) {
 	var helpers = {
 		/**
 		 * @method extend
@@ -115,9 +115,13 @@ function layouts(handlebars,viewPath) {
 				context = mixin({}, this, customContext, options.hash),
 				data = handlebars.createFrame(options.data);
 			//以view目录为基础目录加载相对路径读取layout文件，生成template
-			var c=fs.readFileSync(path.join(viewPath,name),'utf-8');
-			var template = handlebars.compile(c);
-
+			var template = handlebars.compile(
+				fs.readFileSync(
+					//通过think-template-handlebars注册rootPath
+					path.join(handlebars.rootPath,name),
+					'utf-8'
+				)
+			);
 			// Partial template required
 			if (template == null) {
 				throw new Error('Missing partial: \'' + name + '\'');
