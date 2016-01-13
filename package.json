@@ -1,7 +1,7 @@
 {
   "name": "think-handlebars-layouts",
   "version": "0.0.1",
-  "description": "just a adapter for thinkjs2 for handlebars-layouts",
+  "description": "just an adapter for thinkjs2 for handlebars-layouts",
   "keywords": [
     "blocks",
     "dust",
