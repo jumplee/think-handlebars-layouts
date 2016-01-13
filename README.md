@@ -2,17 +2,12 @@
 
 [![NPM version][npm-img]][npm-url] [![Downloads][downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coveralls-img]][coveralls-url] [![Chat][gitter-img]][gitter-url] [![Tip][amazon-img]][amazon-url]
 
-Handlebars helpers which implement layout blocks similar to Jade, Jinja, Swig, and Twig.
 
+Fork from [Handlebars Layouts](https://github.com/shannonmoeller/handlebars-layouts),used by [think-template-handlebars](https://github.com/jumplee/think-template-handlebars)
+add some handlebars helpers which implement layout blocks similar to Jade, Jinja, Swig, and Twig for **thinkjs2** which is a mvc web framework.
 ## Install
 
-With [Node.js](http://nodejs.org):
-
-    $ npm install handlebars-layouts
-
-With [Bower](http://bower.io):
-
-    $ bower install shannonmoeller/handlebars-layouts
+    $ npm install think-handlebars-layouts
 
 ## Api
 
@@ -425,7 +420,6 @@ Standards for this project, including tests, code coverage, and semantics are en
 
 ----
 
-© 2015 Shannon Moeller <me@shannonmoeller.com>
 
 Licensed under [MIT](http://shannonmoeller.com/mit.txt)
 
