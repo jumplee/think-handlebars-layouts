@@ -222,8 +222,8 @@ function layouts(handlebars) {
  * @return {Object} Object of helpers.
  * @static
  */
-layouts.register = function (handlebars,viewPath) {
-	var helpers = layouts(handlebars,viewPath);
+layouts.register = function (handlebars) {
+	var helpers = layouts(handlebars);
 
 	handlebars.registerHelper(helpers);
 

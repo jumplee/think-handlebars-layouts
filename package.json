@@ -1,6 +1,6 @@
 {
   "name": "think-handlebars-layouts",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "just an adapter for thinkjs2 for handlebars-layouts",
   "keywords": [
     "blocks",
