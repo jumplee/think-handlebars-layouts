@@ -115,12 +115,33 @@ function layouts(handlebars) {
 				context = mixin({}, this, customContext, options.hash),
 				data = handlebars.createFrame(options.data);
 			//以view目录为基础目录加载相对路径读取layout文件，生成template
-			var template = handlebars.compile(
-				fs.readFileSync(
-					//通过think-template-handlebars注册rootPath
-					path.join(handlebars.rootPath,name),
+			var content=fs.readFileSync(
+				//通过think-template-handlebars注册rootPath
+				path.join(handlebars.rootPath,name),
+				'utf-8'
+			);
+			content=content.replace(/<script\s?.*id="(\w*)">([\s\S]*?)<\/script>/ig,function(Regstr,$1,$2){
+				var ret =
+					'<script type="text/x-handlebars" id="'+$1+'">\n' +
+					$2.replace(/{{/g,'\\{{')+
+					'</script>';
+				return ret;
+			});
+			content=content.replace(/<tpl\s?.*id="(\w*)">([\s\S]*?)<\/tpl>/ig,function(Regstr,$1,$2){
+				var ret =
+					'<script type="text/x-handlebars" id="'+$1+'">\n' +
+					$2.replace(/{{/g,'\\{{')+
+					'</script>';
+				return ret;
+			});
+			content=content.replace(/<include\s?.*url="(.*?)"(.*?)\/>/ig,function(Regstr,name){
+				return fs.readFileSync(
+					path.resolve(path.dirname(templateFile),name),
 					'utf-8'
-				)
+				);
+			});
+			var template = handlebars.compile(
+				content
 			);
 			// Partial template required
 			if (template == null) {
